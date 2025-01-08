@@ -1,0 +1,13 @@
+body {
+    font-family: sans-serif;
+    background-color: #181818; /* Dark background */
+    color: #fff;
+}
+
+#app {
+    max-width: 375px; /* Adjust width as needed */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Add more specific styles for each element as per the design */

@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif; /* Apply font family */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('/image/nerdschalk-com-habit-tracker.jpg'); /* Replace with your image URL */
+    background-size: cover; /* Cover the entire area */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+}
+
+.header {
+    text-align: center;
+    color: #333;
+    margin: 20px 0;
+    font-size: 2em; /* Larger font size for emphasis */
+    font-family: 'Times New Roman', Times, serif; /* Ensure font family */
+}
+
+/* New Style for Registration Form */
+.registration-header {
+    background-color: rgba(255, 255, 255, 0.9); /* Light background for the header */
+    padding: 20px; /* Padding for spacing */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Slight shadow for depth */
+}
+
+.container {
+    height: 80vh; /* 80% of the viewport height */
+    max-width: 850px; /* Limit the maximum width */
+    display: flex;
+    flex-direction: column; /* Arrange flex items in a column */
+    justify-content: flex-start; /* Align items at the start (top) */
+    align-items: center; /* Center align items horizontally */
+    background-image: url('/image/Screenshot\ 2567-12-31\ at\ 11.06.43.png'); /* Inner background image */
+    background-size: cover; /* Adjust to cover the container */
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 90px; /* Padding for inner content spacing */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for aesthetics */
+}
+
+.openbtn {
+    display: inline;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    z-index: 1000; /* Ensure button is above everything */
+    width: 8%;
+    text-align: left;
+    font-family: 'Times New Roman', Times, serif; /* Ensure font family */
+}
+
+.openbtn:hover {
+    background-color: #444;
+}
+
+.sidebar {
+    height: 100%; /* Full-height */
+    width: 0; /* Initially hidden */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #333; /* Sidebar background */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* Smooth transition */
+    padding-top: 60px; /* Spacing at the top */
+}
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+    font-family: 'Times New Roman', Times, serif; /* Ensure font family */
+}
+
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-family: 'Times New Roman', Times, serif; /* Ensure font family */
+}
+
+/* Form Elements Styling */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+    color: #555;
+    font-family: 'Times New Roman', Times, serif; /* Ensure font family */
+}
+
+input,
+select {
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Times New Roman', Times, serif; /* Ensure font family */
+}
+
+input.invalid {
+    border-color: red; /* Red border for invalid input */
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+}
+
+button {
+    padding: 10px;
+    background-color: #1E90FF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif; /* Ensure font family */
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.back-button, .next-button {
+    padding: 13px 20px;
+    border: none;
+    border-radius: 200px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Times New Roman', Times, serif; /* Ensure font family */
+}
+
+.back-button {
+    background-color: #1E90FF; /* blue color */
+    color: white;
+}
+
+.sign-button {
+    background-color: #1E90FF; /* blue color */
+    color: white;
+}
+
+.content {
+    text-align: center;
+    padding: 33px;
+    border-radius: 40px;
+    width: 100%; /* Full width of the container */
+    max-width: 650px; /* Maximum width */
+    background-color: rgba(255, 255, 255, 0.8); /* Optional white background with transparency */
+    margin-top: 20px; /* Added margin top to push downwards */
+    font-family: 'Times New Roman', Times, serif; /* Ensure font family */
+}
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: white;
+    background-color: #1E90FF;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-family: 'Times New Roman', Times, serif; /* Ensure font family */
+}
+
+button:hover {
+    background-color: #1E90FF;
+}
+
+h1 {
+    margin: 30px 0; /* Add margin for spacing */
+    font-family: 'Times New Roman', Times, serif; /* Ensure font family */
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif; /* Apply font family */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px; /* Added space below header */
+}
+
+.registration-header {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+input.invalid {
+    border-color: red; /* Red border for invalid input */
+    outline: none; /* Remove outline */
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px; /* Space from inputs */
+}
+
+button {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 18px;
+    color: white;
+    background-color: #1E90FF;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* Space above the button */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}

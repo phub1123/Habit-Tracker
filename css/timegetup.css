@@ -1,0 +1,96 @@
+body {
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full height of the viewport */
+    font-family: 'Times New Roman', Times, serif; /* Change font to Times New Roman */
+    background-image: url('/image/nerdschalk-com-habit-tracker.jpg'); /* Add your background image */
+    background-size: cover; /* Cover the entire body */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Don't repeat the image */
+    color: #000; /* Change text color to black for visibility */
+    margin: 0; /* Remove default margin */
+    padding: 20px; /* Add padding */
+}
+
+.container {
+    width: 233px;
+    padding: 71px;
+    border-radius: 40px;
+    background-color: #FFFFFF; /* Set container color to white */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+    display: flex;
+    border-radius: 20px; /* Rounded corners */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+.time-selector {
+    display: flex;
+}
+
+.time-column {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    overflow-y: auto;
+    max-height: 200px;
+}
+
+.time-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px; /* Adjust width as needed */
+    height: 30px;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    position: relative; /* To position the underline */
+    transition: background-color 0.3s; /* Smooth transition */
+    background-color: #f0f0f0; /* Base color for time rows */
+}
+
+.time-row.selected {
+    background-color: #007bff; /* Selected color */
+    color: #fff; /* Change text color on selection */
+}
+
+.time-row.selected:not(.no-underline)::after {
+    content: "";
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 0;
+    right: 0;
+    border-top: 2px solid #007bff; /* Add blue underline */
+    transform: translateY(-50%); /* Center underline vertically */
+}
+
+
+
+.next-button {
+    font-family: 'Times New Roman', Times, serif; /* Enforce Times New Roman for the button text */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 7px 28px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 30px;
+    font-size: 17px;
+    display: flex; /* Make it a flex item */
+    align-items: center; /* Center in the button */
+    justify-content: center; /* Center text within the button */
+}
+button:hover {
+    background-color: #0088cc; /* Darker blue on hover */
+}

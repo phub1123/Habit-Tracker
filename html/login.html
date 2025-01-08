@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to Habit Tracker</title>
+    <link rel="stylesheet" href="/css/login.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            height: 100%;
+            font-family: 'Times New Roman', Times, serif; /* Apply font family */
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            background-image: url('/image/nerdschalk-com-habit-tracker.jpg'); /* Outer background image */
+        }
+
+        .login-container {
+            background-color: #ffffff; /* Set login container background to pure white */
+            padding: 78.5px; /* Adjusted to match style */
+            border-radius: 20px; /* Adjusted to 20px */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Shadows kept same */
+            width: 379px; /* Keep the same width */
+            text-align: center;
+            border: 2px solid #ddd; /* Added to match the border size */
+        }
+
+        h1 {
+            margin-bottom: 30px; /* Increased to 30px */
+            font-size: 36px; /* Increased to 36px */
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 14px; /* Increased to 14px */
+            margin-bottom: 12px; /* Increased to 12px */
+            border: 2px solid #ddd; /* Match the border size */
+            border-radius: 6px; /* Adjusted if needed */
+            box-sizing: border-box;
+        }
+
+        .button-container {
+            display: flex; /* Use flexbox */
+            justify-content: space-between; /* Space between the buttons */
+            margin-top: 12px; /* Space above the buttons */
+        }
+
+        .button {
+            width: 100%; /* Set both buttons to take full width */
+            padding: 14px; /* Set consistent padding */
+            background-color: #0066cc; /* Button background color */
+            color: white;
+            border: 2px solid #ddd; /* Added to match border */
+            border-radius: 25px; /* Adjusted for a rounder button */
+            cursor: pointer;
+            text-decoration: none; /* Ensure no underline */
+            text-align: center; /* Center the text */
+            margin: 0 5px; /* Small margin on the sides for spacing */
+        }
+
+        .button:first-child {
+            /* Override first button style to eliminate left margins */
+            margin-left: 0;
+        }
+
+        .button:last-child {
+            /* Override last button style to eliminate right margins */
+            margin-right: 0;
+        }
+
+        .error-message {
+            color: red;
+            margin: 10px 0;
+        }
+
+        button:hover,
+        .button:hover {
+            background-color: #0088cc; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login to Habit Tracker</h1>
+        <form id="loginForm" onsubmit="return validateForm()">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" id="password" name="password" placeholder="Password" required><br>
+            <div class="error-message" id="error-message" style="display: none;"></div>
+            <div class="button-container">
+                <button type="submit" class="button">Login</button>
+                <a href="/html/registration.html" class="button">Sign Up</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+
+            // Reset error message and styles
+            errorMessage.style.display = "none"; // Hide error message
+
+            // Check if password length is less than 8 characters
+            if (password.length < 8) {
+                errorMessage.innerText = "Password must be more than 8 characters";
+                errorMessage.style.display = "block"; // Show error message
+                return false; // Prevent form submission
+            }
+
+            // Simulate successful login (replace with your login logic)
+            window.location.href = '/html/1stpage.html'; // Redirect after successful login
+            return false; // Prevent the default form submission
+        }
+    </script>
+</body>
+</html>

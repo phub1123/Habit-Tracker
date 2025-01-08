@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback</title>
+    <style>
+        body {
+            display: flex; /* Enable flexbox */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full height of the viewport */
+            font-family: 'Times New Roman', Times, serif; /* Change font to Times New Roman */
+            background-image: url('/image/nerdschalk-com-habit-tracker.jpg'); /* Add your background image */
+            background-size: cover; /* Cover the entire body */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Don't repeat the image */
+            color: #000; /* Change text color to black for visibility */
+            margin: 0; /* Remove default margin */
+            padding: 20px; /* Add padding */
+            font-size: 16px; /* Set base font size */
+        }
+
+        .container {
+            max-width: 360px; /* Increased max-width for better layout */
+            width: 60%; /* Make it responsive, take up 90% of the available width */
+            max-height: 75vh; /* Set max height for the container */
+            overflow-y: auto; /* Enable scrolling for the container */
+            padding: 20px; /* Adjust padding */
+            background-color: #fff; /* Add a light background to the container */
+            border-radius: 20px; /* Add rounded corners to the container */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+            position: relative; /* For positioning the "+" sign */
+        }
+
+        .note-list {
+            list-style: none;
+            padding: 0;
+            margin: 0; /* Reset margin for the list */
+        }
+
+        .note {
+            padding: 15px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd; /* Add a subtle border between notes */
+            display: flex; /* Align items horizontally */
+            flex-direction: column; /* Stack children vertically */
+        }
+
+        .note-time {
+            font-size: 16px; /* Increased font size for note time */
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        .note-content-wrapper {
+            display: flex; /* Align textarea and button horizontally */
+            align-items: center; /* Center items vertically */
+            justify-content: space-between; /* Distribute space between textarea and button */
+        }
+
+        .note-content {
+            max-height: 100px; /* Limit height of the textarea */
+            overflow-y: auto; /* Make textarea scrollable */
+            width: calc(100% - 80px); /* Adjust for button width + margin */
+            resize: vertical; /* Allow vertical resizing */
+            padding: 5px; /* Add padding for better appearance */
+            box-sizing: border-box; /* Include padding in width */
+            font-family: 'Times New Roman', serif; /* Change font to Times New Roman in textarea */
+            font-size: 14px; /* Increased font size for textarea content */
+            border-radius: 10px;
+        }
+
+        .note-content::placeholder {
+            font-size: 16px; /* Increased font size for placeholder text */
+            color: #aaa; /* Optional: Change color of placeholder text */       
+        }
+
+        .delete-button {
+            background-color: royalblue; /* Color for delete button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 5px 10px; /* Padding for the delete button */
+            margin-left: 10px; /* Margin between textarea and delete button */
+            height: 30px; /* Fixed height for the button */
+            font-size: 14px; /* Increased font size for the button */
+            display: flex; /* Use flexbox for centering */
+            align-items: center; /* Center content vertically in the button */
+            font-family: 'Times New Roman', Times, serif; /* Change font to Times New Roman */
+        }
+
+        .add-note-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            position: fixed;
+            bottom: 80px;
+            right: 495px;
+            font-size: 16px; /* Increased font size for the add button */
+        }
+
+        /* Style for the '+' sign */
+        .plus-sign {
+            position: absolute; /* Position it relative to the container */
+            top: 20px; /* Position it under the header */
+            right: 20px; /* Right side alignment */
+            font-size: 24px; /* Size of the plus sign */
+            color: #000; /* Color of the plus sign */
+            cursor: pointer; /* Change cursor to pointer on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Feedback</h1>
+        <span class="plus-sign" id="add-note-button">+</span> <!-- Added plus sign here -->
+        <ul class="note-list" id="note-list"></ul>
+    </div>
+
+    <script>
+        const noteList = document.getElementById('note-list');
+        const addNoteButton = document.getElementById('add-note-button');
+
+        // Function to load notes from localStorage
+        function loadNotes() {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            notes.forEach(note => {
+                createNoteElement(note.time, note.content);
+            });
+        }
+
+        // Function to create a note element
+        function createNoteElement(time, content) {
+            const newNote = document.createElement('li');
+            newNote.classList.add('note');
+
+            const noteTime = document.createElement('p');
+            noteTime.classList.add('note-time');
+            noteTime.textContent = time;
+
+            const noteContentWrapper = document.createElement('div');
+            noteContentWrapper.classList.add('note-content-wrapper'); // Create wrapper for textarea and button
+            
+            const noteContent = document.createElement('textarea');
+            noteContent.classList.add('note-content');
+            noteContent.value = content; // Set the existing note content
+            noteContent.placeholder = "Enter your feedback"; // Placeholder text
+
+            // Update the note content in localStorage when the textarea content changes
+            noteContent.addEventListener('input', () => {
+                updateNoteInStorage(time, noteContent.value);
+            });
+
+            const deleteButton = document.createElement('button');
+            deleteButton.classList.add('delete-button');
+            deleteButton.textContent = 'Delete';
+
+            // Delete functionality
+            deleteButton.addEventListener('click', () => {
+                noteList.removeChild(newNote);
+                deleteNoteFromStorage(time); // Remove from localStorage
+            });
+
+            // Append textarea and delete button to the wrapper
+            noteContentWrapper.appendChild(noteContent);
+            noteContentWrapper.appendChild(deleteButton);
+
+            // Append elements in the correct order
+            newNote.appendChild(noteTime);
+            newNote.appendChild(noteContentWrapper);
+            noteList.appendChild(newNote);
+        }
+
+        // Function to add the new note to localStorage
+        function addNoteToStorage(note) {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            notes.push(note);
+            localStorage.setItem('notes', JSON.stringify(notes));
+        }
+
+        // Function to update the note content in localStorage
+        function updateNoteInStorage(time, content) {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            const noteIndex = notes.findIndex(note => note.time === time);
+            if (noteIndex !== -1) {
+                notes[noteIndex].content = content; // Update the content
+                localStorage.setItem('notes', JSON.stringify(notes)); // Save updated notes
+            }
+        }
+
+        // Function to delete note from localStorage
+        function deleteNoteFromStorage(time) {
+            let notes = JSON.parse(localStorage.getItem('notes')) || [];
+            notes = notes.filter(note => note.time !== time); // Filter out the deleted note
+            localStorage.setItem('notes', JSON.stringify(notes));
+        }
+
+        // Load notes on page load
+        loadNotes();
+
+        // Button to add a new note when clicking on the '+' sign
+        addNoteButton.addEventListener('click', () => {
+            const time = new Date().toLocaleTimeString();
+            const content = ""; // Empty content for the new note
+            createNoteElement(time, content); // Create the new note element
+            addNoteToStorage({ time, content }); // Add the new note to localStorage
+        });
+    </script>
+</body>
+</html>

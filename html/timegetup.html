@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker</title>
+    <link rel="stylesheet" href="/css/timegetup.css">
+    <style>
+        /* Add this CSS to remove underline from the anchor */
+        a {
+            text-decoration: none; /* Remove underlines from links */
+        }
+        
+        /* You can add any other styling here for your page */
+        .time-row {
+            cursor: pointer; /* Makes the rows clickable */
+        }
+        
+        .selected {
+            background-color: lightblue; /* Highlighted selection */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>What time do you usually get up?</h1>
+        <p>Choose the time you usually start a new day.</p>
+
+        <div class="time-selector">
+            <div class="time-column" id="column1">
+                <div class="time-row">00</div>
+                <div class="time-row">01</div>
+                <div class="time-row">02</div>
+                <div class="time-row">03</div>
+                <div class="time-row">04</div>
+                <div class="time-row">05</div>
+                <div class="time-row">06</div>
+                <div class="time-row">07</div>
+                <div class="time-row">08</div>
+                <div class="time-row">09</div>
+                <div class="time-row">10</div>
+                <div class="time-row">11</div>
+                <div class="time-row">12</div>
+                <div class="time-row">13</div>
+                <div class="time-row">14</div>
+                <div class="time-row">15</div>
+                <div class="time-row">16</div>
+                <div class="time-row">17</div>
+                <div class="time-row">18</div>
+                <div class="time-row">19</div>
+                <div class="time-row">20</div> 
+                <div class="time-row">21</div>
+                <div class="time-row">22</div>
+                <div class="time-row">23</div>
+            </div>
+            <div class="time-column" id="column2">
+                <div class="time-row">00</div>
+                <div class="time-row">01</div>
+                <div class="time-row">02</div>
+                <div class="time-row">03</div>
+                <div class="time-row">04</div>
+                <div class="time-row">05</div>
+                <div class="time-row">06</div>
+                <div class="time-row">07</div>
+                <div class="time-row">08</div>
+                <div class="time-row">09</div>
+                <div class="time-row">10</div>
+                <div class="time-row">11</div>
+                <div class="time-row">12</div>
+                <div class="time-row">13</div>
+                <div class="time-row">14</div>
+                <div class="time-row">15</div>
+                <div class="time-row">16</div>
+                <div class="time-row">17</div>
+                <div class="time-row">18</div>
+                <div class="time-row">19</div>
+                <div class="time-row">20</div>
+                <div class="time-row">21</div>
+                <div class="time-row">22</div>
+                <div class="time-row">23</div>
+                <div class="time-row">24</div>
+                <div class="time-row">25</div>
+                <div class="time-row">26</div>
+                <div class="time-row">27</div>
+                <div class="time-row">28</div>
+                <div class="time-row">29</div>
+                <div class="time-row">30</div>
+                <div class="time-row">31</div>
+                <div class="time-row">32</div>
+                <div class="time-row">33</div>
+                <div class="time-row">34</div>
+                <div class="time-row">35</div>
+                <div class="time-row">36</div>
+                <div class="time-row">37</div>
+                <div class="time-row">38</div>
+                <div class="time-row">39</div>
+                <div class="time-row">40</div>
+                <div class="time-row">41</div>
+                <div class="time-row">42</div>
+                <div class="time-row">43</div>
+                <div class="time-row">44</div>
+                <div class="time-row">45</div>
+                <div class="time-row">46</div>
+                <div class="time-row">47</div>
+                <div class="time-row">48</div>
+                <div class="time-row">49</div>
+                <div class="time-row">50</div>
+                <div class="time-row">51</div>
+                <div class="time-row">52</div>
+                <div class="time-row">53</div>
+                <div class="time-row">54</div>
+                <div class="time-row">55</div>
+                <div class="time-row">56</div>
+                <div class="time-row">57</div>
+                <div class="time-row">58</div>
+                <div class="time-row no-underline">59</div> 
+            </div>
+        </div>
+        <button id="next-button" class="next-button" disabled>Next</button>
+    </div>
+    <script src="/js/timegetup.js"></script>
+    <script>
+        let selectedHour = null;
+        let selectedMinute = null;
+
+        // Function to handle hour selection
+        const hourRows = document.querySelectorAll('#column1 .time-row');
+        hourRows.forEach(row => {
+            row.addEventListener('click', () => {
+                // Remove selected class from other hours
+                hourRows.forEach(r => r.classList.remove('selected'));
+                // Mark this hour as selected
+                row.classList.add('selected');
+                selectedHour = row.textContent; // Get selected hour
+                checkSelection(); // Check if both are selected
+            });
+        });
+
+        // Function to handle minute selection
+        const minuteRows = document.querySelectorAll('#column2 .time-row');
+        minuteRows.forEach(row => {
+            row.addEventListener('click', () => {
+                // Remove selected class from other minutes
+                minuteRows.forEach(r => r.classList.remove('selected'));
+                // Mark this minute as selected
+                row.classList.add('selected');
+                selectedMinute = row.textContent; // Get selected minute
+                checkSelection(); // Check if both are selected
+            });
+        });
+
+        // Function to check if both hour and minute are selected
+        function checkSelection() {
+            const nextButton = document.getElementById('next-button');
+            if (selectedHour !== null && selectedMinute !== null) {
+                nextButton.disabled = false; // Enable the button
+                nextButton.addEventListener('click', goToNextPage); // Attach functionality to go to next page
+            } else {
+                nextButton.disabled = true; // Disable the button
+            }
+        }
+
+        // Navigate to the next page
+        function goToNextPage() {
+            // Here you can set session storage or perform other actions if required
+            window.location.href = '/html/endday.html'; // Redirect to the next page
+        }
+    </script>
+</body>
+</html>

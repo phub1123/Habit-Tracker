@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your First Habit</title>
+    <style>
+        body {
+            display: flex; /* Enable flexbox */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full height of the viewport */
+            font-family: 'Times New Roman', Times, serif; /* Change font to Times New Roman */
+            background-image: url('/image/nerdschalk-com-habit-tracker.jpg'); /* Add your background image */
+            background-size: cover; /* Cover the entire body */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Don't repeat the image */
+            color: #000; /* Chan ge text color to black for visibility */
+            margin: 0; /* Remove default margin */
+            padding: 20px; /* Add padding */
+        }
+
+        .container {
+            margin: 0 auto; /* Center the container */
+            width: 280px;
+            padding: 55px; /* Adjusted padding for a tighter fit */
+            border-radius: 20px;
+            background-color: #ffffff; /* Container color */
+            display: flex;
+            flex-direction: column; /* Align items vertically */
+            align-items: center; /* Center items horizontally */
+            font-family: 'Times New Roman', Times, serif; /* Ensure Times New Roman here too */
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px; /* Reduced margin for tighter spacing */
+            color: #333; /* Darker text for contrast */
+            text-align: center; /* Center the heading */
+        }
+
+        .habit-list {
+            margin-top: 15px; /* Reduced top margin */
+            max-height: 250px; /* Adjusted height to show 5 habits */
+            overflow-y: auto; /* Enable vertical scrolling */
+            width: 100%; /* Take up full width */
+            display: flex; /* Use flex to center items */
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items horizontally */
+        }
+
+        .habit-button {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Align text and image to the left */
+            background-color: #383838; /* Background color for the button */
+            border: 2px solid #333; /* Border for the button */
+            border-radius: 8px;
+            padding: 7px 9px; /* Adjust for good spacing */
+            cursor: pointer;
+            font-size: 14px; /* Set font size in px */
+            width: 70%; /* Take up a percentage of the parent width */
+            box-sizing: border-box; /* Include padding and border in width calculation */
+            margin-bottom: 10px; /* Space between buttons */
+            transition: background-color 0.3s, color 0.3s; /* Transition effect */
+            font-family: 'Times New Roman', Times, serif; /* Ensure button uses Times New Roman */
+            color: white; /* Set text color to white */
+        }
+
+        .habit-button:hover {
+            background-color: #505050; /* Change background on hover */
+        }
+
+        .habit-button.selected {
+            background-color: blue; /* Color when selected */
+            color: white; /* Text color when selected */
+        }
+
+        .habit-button img {
+            max-width: 30px; /* Set max width for the image */
+            max-height: 30px; /* Set max height for the image */
+            margin-right: 10px; /* Space between image and text */
+        }
+
+        .custom-habit {
+            display: flex;
+            align-items: center;
+            margin-top: 15px; /* Reduced top margin */
+            width: 90%; /* Full width */
+            border-radius: 45px;  
+        }
+
+        .custom-habit input {
+            flex: 1;
+            background-color: #383838;
+            color: #fff;
+            border: none;
+            border-radius: 16px;
+            padding: 14px;
+            margin-left: 5px;
+            font-family: 'Times New Roman', Times, serif; /* Ensure input uses Times New Roman */
+        }
+
+        .buttons {
+            display: flex; /* Use flexbox for button alignment */
+            justify-content: center; /* Center buttons */
+            width: 100%; /* Full width of the container */
+            margin-top: 15px; /* Reduced space above buttons */
+        }
+
+        .skip-button,
+        .next-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 3px; /* Reduced margin to tighten space between buttons */
+            font-family: 'Times New Roman', Times, serif; /* Ensure buttons use Times New Roman */
+        }
+
+        .skip-button,
+        .next-button {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Choose the first habit that you'd like to build</h1>
+
+        <div class="habit-list">
+            <button class="habit-button selected">
+                <img src="/image/Reading.jpeg" width="30" height="30" alt="Sleep over 8h" />
+                <span>Reading</span>
+            </button>
+            <button class="habit-button">
+                <img src="/image/Draw:paint something.jpeg" alt="Have a healthy meal" />
+                <span>Draw/paint something</span>
+            </button>
+            
+            <button class="habit-button">
+                <img src="/image/Practice a hobby.jpeg" alt="Drink 8 cups of water" />
+                <span>Practice a hobby</span>
+            </button>
+            <button class="habit-button">
+                <img src="/image/Keepajournel.jpeg" alt="Workout" />
+                <span>Keep a journel</span>
+            </button>
+            <button class="habit-button">
+                <img src="/image/Meet new people.jpeg" alt="Walking" />
+                <span>Meet new people</span>
+            </button>
+            <button class="habit-button">
+                <img src="/image/Publish a new post.jpeg" alt="Practice Meditation" />
+                <span>Publish a new post</span>
+            </button>
+            <button class="habit-button">
+                <img src="/image/DIY.jpeg" alt="Maintain good posture" />
+                <span>DIY</span>
+            </button>
+            <button class="habit-button">
+                <img src="/image/Video Call.jpeg" alt="Block screen time" />
+                <span>Video call</span>
+            </button>
+        </div>
+
+        <div class="custom-habit">
+            <input type="text" placeholder="Your first habit is...">
+        </div><br>
+        <a href="/html/1stpage.html">
+            <button class="skip-button">Skip</button>
+            <button class="next-button">Next</button>
+            
+        </a>
+
+        
+    </div>
+
+    <script>
+        const habitButtons = document.querySelectorAll('.habit-button');
+        const customHabitInput = document.querySelector('.custom-habit input');
+        const nextButton = document.querySelector('.next-button');
+    
+        habitButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove the 'selected' class from all buttons
+                habitButtons.forEach(b => b.classList.remove('selected'));
+                // Add the 'selected' class to the clicked button
+                button.classList.add('selected');
+            });
+        });
+    
+        // When typing in the input, clear the selected state from all habit buttons
+        customHabitInput.addEventListener('input', () => {
+            habitButtons.forEach(b => b.classList.remove('selected'));
+        });
+    
+        // Save the selected habit in localStorage when clicking 'Next'
+        nextButton.addEventListener('click', () => {
+            const selectedHabit = document.querySelector('.habit-button.selected span');
+            const customHabit = customHabitInput.value.trim();
+    
+            // If a habit is selected, save it; otherwise, save the custom habit
+            const habitToSave = selectedHabit ? selectedHabit.innerText : customHabit;
+            localStorage.setItem('firstHabit', habitToSave);
+        });
+    </script>
+</body>
+</html>

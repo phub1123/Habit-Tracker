@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Target Selection</title>
+    <link rel="stylesheet" href="/css/target.css">
+</head>
+<body>
+    <div class="container">
+        <h1>What's your target?</h1>
+        <p>Help us understand your needs better</p>
+
+        <div class="target-grid">
+            <button class="target-button" data-target="Live Healthier">
+                <div class="icon-container">
+                    <img src="/image/Live Healthier.jpeg" alt="Live Healthier Icon" class="icon">
+                    <span>Live Healthier</span>
+                </div>
+            </button>
+            <button class="target-button" data-target="Relieve Stress">
+                <div class="icon-container">
+                    <img src="/image/Relieve Stress.jpeg" alt="Relieve Stress Icon" class="icon">
+                    <span>Relieve Stress</span>
+                </div>
+            </button>
+            <button class="target-button" data-target="Try New Things">
+                <div class="icon-container">
+                    <img src="/image/Try new things.jpeg" alt="Try New Things Icon" class="icon">
+                    <span>Try New Things</span>
+                </div>
+            </button>
+            <button class="target-button" data-target="Be More Focused">
+                <div class="icon-container">
+                    <img src="/image/be more focused.jpeg" alt="Be More Focused Icon" class="icon">
+                    <span>Be More Focused</span>
+                </div>
+            </button>
+            <button class="target-button" data-target="Better Relationship">
+                <div class="icon-container">
+                    <img src="/image/better relationship.jpeg" alt="Better Relationship Icon" class="icon">
+                    <span>Better Relationship</span>
+                </div>
+            </button>
+            <button class="target-button" data-target="Sleep Better">
+                <div class="icon-container">
+                    <img src="/image/sleep better.jpeg" alt="Sleep Better Icon" class="icon">
+                    <span>Sleep Better</span>
+                </div>
+            </button>
+        </div>
+        
+        <button id="next-button" class="next-button">Next</button>
+    </div>
+    
+    <script src="/js/target.js"></script>
+    <script>
+        let selectedTarget = null;
+
+        // Function to handle target selection
+        document.querySelectorAll('.target-button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Deselect all buttons
+                document.querySelectorAll('.target-button.selected').forEach(btn => btn.classList.remove('selected'));
+                
+                // Mark the selected button
+                this.classList.add('selected');
+                selectedTarget = this.getAttribute('data-target'); // Store selected target
+            });
+        });
+
+        // Event listener for the Next button
+        document.getElementById('next-button').addEventListener('click', function(event) {
+            // Check which target is selected
+            if (selectedTarget === "Live Healthier") {
+                // Allow navigation to livehealthier.html
+                window.location.href = "/html/livehealthier.html";
+            } else if (selectedTarget === "Relieve Stress") {
+                // Allow navigation to relievepressure.html
+                window.location.href = "/html/relievepressure.html";
+            } else if (selectedTarget === "Try New Things") {
+                // Allow navigation to trynewthings.html
+                window.location.href = "/html/trynewthings.html";
+            } else if (selectedTarget === "Be More Focused") {
+                // Allow navigation to bemorefocused.html
+                window.location.href = "/html/bemorefocused.html";
+            } else if (selectedTarget === "Better Relationship") {
+                // Allow navigation to betterrelationship.html
+                window.location.href = "/html/betterrelationship.html"; 
+            } else if (selectedTarget === "Sleep Better") {
+                // Allow navigation to sleepbetter.html
+                window.location.href = "/html/sleepbetter.html"; 
+            } else {
+                alert("Please select a valid target before proceeding.");
+                event.preventDefault(); // Prevent navigation
+            }
+        });
+    </script>
+</body>
+</html>

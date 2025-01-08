@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker</title>
+    <style>
+        /* Your existing styles */
+        /* Sidebar Styles */
+        .openbtn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 15px;
+            z-index: 1000;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .openbtn:hover {
+            background-color: white;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed; 
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            background-color: white;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            font-size: 16px;
+            color: black;
+            display: flex;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .sidebar a.icon-link {
+            padding: 3px 8px;
+            font-size: 14px;
+        }
+
+        .sidebar a.icon-link img {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+
+        .sidebar a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 25px;
+            margin-left: 50px;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Times New Roman', Times, serif;
+            background-image: url('/image/nerdschalk-com-habit-tracker.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #000;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #FFFFFF; 
+            color: #000000; 
+            padding: 50px;
+            border-radius: 20px;
+            width: 290px; 
+            display: flex;
+            flex-direction: column; 
+            justify-content: space-between; 
+            height: 70vh; 
+        }
+
+        #week-days-container {
+            overflow-x: auto;
+            white-space: nowrap;
+            margin: 0;
+            padding: 0;
+        }
+
+        #week-days {
+            display: flex;
+            margin: 0;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .day {
+            text-align: center;
+            padding: 5px 0;
+            margin: 0;
+            flex: 1;
+            cursor: default; /* Not clickable */
+        }
+
+        #dates {
+            display: flex;
+            overflow-x: auto;
+        }
+
+        .date {
+            text-align: center;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            margin: 0 16px;
+            cursor: default; /* Not clickable */
+        }
+
+        .selected {
+            background-color: blue; 
+            color: white; 
+        }
+
+        #day-tabs {
+            display: flex;
+            justify-content: space-between; 
+            margin-top: 10px;
+            font-size: 20;
+        }
+
+        .tab {
+            padding: 5px 10px;
+            margin: 0; 
+            border: 1px solid #333; 
+            border-radius: 8px;
+            background-color: transparent;
+            color: black; 
+            flex: 1; 
+            text-align: center; 
+            font-family: 'Times New Roman', Times, serif; 
+            cursor: pointer; /* Change cursor to indicate clickable tab */
+        }
+
+        .tab.selected {
+            background-color: blue; 
+            color: white; 
+        }
+
+        #habit-list {
+            margin-top: 15px;
+            max-height: 200px; 
+            overflow-y: auto; 
+        }
+
+        .habit {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ccc; 
+        }
+
+        .habit-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .habit-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .habit-actions {
+            margin-left: auto; 
+            position: relative; 
+        }
+
+        .dots-button {
+            background-color: transparent;
+            border: none;
+            color: black; 
+            cursor: pointer; 
+            padding: 5px; 
+            font-size: 16; 
+            margin-left: 10px; 
+        }
+
+        .dropdown {
+            display: none; 
+            position: absolute; 
+            background-color: white; 
+            border: 1px solid #ccc; 
+            z-index: 1001; 
+            width: 100px; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+            right: 0; 
+            top: 100%; 
+            border-radius: 10px;
+        }
+
+        .dropdown button {
+            padding: 10px;
+            border: none;
+            width: 100%; 
+            text-align: left; 
+            background: none; 
+            cursor: pointer; 
+        }
+
+        .dropdown button:hover {
+            background-color: #f0f0f0; 
+        }
+
+        #create-habit-button {
+            background-color: royalblue; 
+            color: white; 
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 16;
+            cursor: pointer; 
+            font-family: 'Times New Roman', Times, serif; 
+            width: 100%; 
+        }
+
+        .bottom-buttons {
+            display: flex;
+            justify-content: space-around; 
+            margin-top: auto; 
+        }
+
+        .bottom-button {
+            background-color: transparent;
+            color: black; 
+            border: none;
+            cursor: pointer;
+            flex: 1; 
+            text-align: center; 
+            padding: 10px 0; 
+            font-size: 16;
+            font-family: 'Times New Roman', Times, serif; 
+        }
+
+        .bottom-button img {
+            max-width: 20px; 
+            max-height: 20px; 
+            vertical-align: middle; 
+            margin-right: 5px; 
+        }
+
+        /* Logout Confirmation Styles */
+        .logout-confirmation {
+            display: none; /* Initially hidden */
+            margin-top: 10px;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .logout-confirmation p {
+            font-weight: bold; /* Make the question bold */
+            margin: 0; /* Remove default margin */
+        }
+
+        .logout-confirmation button {
+            margin: 5px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif; /* Times New Roman font */
+        }
+
+    </style>
+</head>
+<body>
+    <button class="openbtn" onclick="openSidebar()">☰ Menu</button>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>       
+        <a href="/html/Feedback.html" class="icon-link">
+            <img src="/image/Feedback.jpeg" alt="Feedback Icon"> Feedback
+        </a>
+        <a href="/html/generalsetting.html" class="icon-link">
+            <img src="/image/General setting.jpeg" alt="General Settings Icon"> General Settings
+        </a>
+        <a href="#" class="icon-link" id="logout-button">
+            <img src="/image/d63f055a-ddd4-4c81-9a11-e7c01d2dfa51.jpeg" alt="Log Out Icon"> Log Out
+        </a>
+        <div id="logout-confirmation" class="logout-confirmation">
+            <p>Log out of your account?</p>
+            <button onclick="cancelLogout()">Cancel</button>
+            <button onclick="confirmLogout()">Logout</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="week-days-container">
+            <div id="week-days">
+                <div class="day">SUN</div>
+                <div class="day">MON</div>
+                <div class="day">TUE</div>
+                <div class="day">WED</div>
+                <div class="day">THU</div>
+                <div class="day">FRI</div>
+                <div class="day">SAT</div>
+            </div>
+        </div>
+
+        <div id="dates">
+            <div class="date">1</div>
+            <div class="date">2</div>
+            <div class="date">3</div>
+            <div class="date">4</div>
+            <div class="date">5</div>
+            <div class="date">6</div> <!-- Default date -->
+            <div class="date">7</div>
+            <div class="date">8</div>
+            <div class="date">9</div>
+            <div class="date">10</div>
+            <div class="date">11</div>
+            <div class="date">12</div>
+            <div class="date">13</div>
+            <div class="date">14</div>
+            <div class="date">15</div>
+            <div class="date">16</div>
+            <div class="date">17</div>
+            <div class="date">18</div>
+            <div class="date">19</div>
+            <div class="date">20</div>
+            <div class="date">21</div>
+            <div class="date">22</div>
+            <div class="date">23</div>
+            <div class="date">24</div>
+            <div class="date">25</div>
+            <div class="date">26</div>
+            <div class="date">27</div>
+            <div class="date">28</div>
+            <div class="date">29</div>
+            <div class="date">30</div>
+            <div class="date">31</div>
+        </div>
+
+        <div id="day-tabs">
+            <button class="tab" id="all-tab">All</button>
+            <button class="tab" id="morning-tab">Morning</button>
+            <button class="tab" id="afternoon-tab">Afternoon</button>
+            <button class="tab" id="evening-tab">Evening</button>
+        </div>
+
+        <div id="habit-list">
+            <div class="habit">
+                <div class="habit-actions"></div>
+            </div>
+        </div>
+
+        <div id="chosen-habit-container" style="display: flex; align-items: center; margin-bottom: 20px;">
+            <input type="checkbox" id="habit-checkbox" style="margin-right: 10px;">
+            <div id="chosen-habit" style="margin-right: 10px;">
+                <!-- The selected habit will be displayed here -->
+            </div>
+            <div class="habit-actions">
+                <button class="dots-button" id="dots-button" onclick="toggleDropdown()">...</button>
+                <div id="dropdown" class="dropdown">
+                    <button onclick="deleteHabit()">Delete</button>
+                </div>
+            </div>
+        </div>
+
+        <button id="create-habit-button">CREATE A NEW HABIT</button>
+
+        <div class="bottom-buttons">
+            <button class="bottom-button" id="today-button">
+                <img src="/image/Today.jpeg" alt="Today Icon"> Today
+            </button>
+            <button class="bottom-button" id="history-button">
+                <img src="/image/history......jpeg" alt="History Icon"> History
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let currentHabit;
+
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function deleteHabit() {
+            const chosenHabitElement = document.getElementById('chosen-habit');
+            chosenHabitElement.innerHTML = '';
+            localStorage.removeItem('firstHabit');
+
+            const dropdown = document.getElementById('dropdown');
+            dropdown.style.display = 'none'; 
+            document.getElementById('habit-checkbox').checked = false; // Reset checkbox
+        }
+
+        function createNewHabit() {
+            const newHabit = prompt("Enter your new habit:");
+            if (newHabit) {
+                document.getElementById('chosen-habit').innerHTML = `${newHabit}`; 
+                localStorage.setItem('firstHabit', newHabit);
+                currentHabit = newHabit; 
+            }
+        }
+
+        document.getElementById('create-habit-button').addEventListener('click', createNewHabit);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const chosenHabitElement = document.getElementById('chosen-habit');
+            const firstHabit = localStorage.getItem('firstHabit');
+
+            if (firstHabit) {
+                chosenHabitElement.innerHTML = `${firstHabit}`; 
+                currentHabit = firstHabit; 
+            } else {
+                chosenHabitElement.innerText = 'You have not selected a habit.';
+            }
+            setDynamicView(); // Call function to set the view based on the current date
+        });
+
+        const habitCheckbox = document.getElementById('habit-checkbox');
+
+        habitCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                alert(`${currentHabit} is completed!`); // Notify the user when marked as completed
+            } else {
+                alert(`${currentHabit} is not completed!`);
+            }
+        });
+
+        function setDynamicView() {
+            const today = new Date();
+            const dayOfWeek = today.getDay();
+            const dateOfMonth = today.getDate(); 
+
+            // Clear any existing selection
+            clearSelection();
+
+            const days = document.querySelectorAll('.day');
+            days[dayOfWeek].classList.add('selected');
+
+            const dates = document.querySelectorAll('.date');
+            if (dateOfMonth > 0 && dateOfMonth <= 31) {
+                dates[dateOfMonth - 1].classList.add('selected');
+            }
+        }
+
+        function clearSelection() {
+            const selectedDays = document.querySelectorAll('.day.selected');
+            const selectedDates = document.querySelectorAll('.date.selected');
+            selectedDays.forEach(day => day.classList.remove('selected'));
+            selectedDates.forEach(date => date.classList.remove('selected'));
+        }
+
+        document.getElementById('today-button').addEventListener('click', function() {
+            alert('You are already on the Today page!');
+        });
+
+        document.getElementById('history-button').addEventListener('click', function() {
+            alert('History button clicked');
+        });
+
+        function openSidebar() {
+            document.getElementById("mySidebar").style.width = "250px";
+        }
+
+        function closeSidebar() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+
+        // Tab click functionality
+        document.getElementById('day-tabs').addEventListener('click', function(event) {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                if (tab === event.target) {
+                    tab.classList.add('selected'); 
+                } else {
+                    tab.classList.remove('selected'); 
+                }
+            });
+        });
+
+        // Logout functionality
+        document.getElementById('logout-button').addEventListener('click', function() {
+            const confirmation = document.getElementById('logout-confirmation');
+            confirmation.style.display = confirmation.style.display === "none" || confirmation.style.display === "" ? "block" : "none";
+        });
+
+        function cancelLogout() {
+            document.getElementById('logout-confirmation').style.display = "none";
+            closeSidebar(); 
+        }
+
+        function confirmLogout() {
+            window.location.href = 'Home.html'; 
+        }
+
+    </script>
+</body>
+</html>

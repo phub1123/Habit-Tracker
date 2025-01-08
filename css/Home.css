@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-image: url('/image/nerdschalk-com-habit-tracker.jpg'); /* Outer background image */
+    background-size: cover; /* Cover the entire screen */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.container {
+    height: 80vh; /* 80% of the viewport height */
+    max-width: 800px; /* Limit the maximum width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/image/Screenshot\ 2567-12-31\ at\ 11.06.43.png'); /* Inner background image */
+    background-size: cover; /* Adjust to cover the container */
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 20px; /* Padding for inner content spacing */
+    border-radius: 40px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for aesthetics */
+}
+
+.content {
+    text-align: center;
+    padding: 30px;
+    border-radius: 20px;
+    width: 100%; /* Full width of the container */
+    max-width: 600px; /* Maximum width */
+    background-color: rgba(255, 255, 255, 0.8); /* Optional white background with transparency */
+    margin-top: 20px; /* Added margin top to push downwards */
+}
+
+button {
+    display: inline-block;
+    padding: 20px 30px;
+    font-size: 18px;
+    color: white;
+    background-color: #00aaff;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0088cc;
+}
+
+
+h1 {
+    margin: 30px 0; /* Add margin for spacing */
+}

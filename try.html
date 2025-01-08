@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Habit Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/try.css">
+</head>
+<body>
+
+    <div id="app">
+        <div id="header">
+            <div class="date">
+                <span class="day">TODAY</span>
+                <span class="date-number">Dec 27</span>
+            </div>
+            <button class="add-button">+</button>
+        </div>
+
+        <div id="calendar-nav">
+            <div class="day-button">SUN,MON,TUE,WED,THU,FRI,SAT</div>
+
+        <div id="calendar-dates">
+            <div class="date-cell">1,2,3,4,5,6,7,8</div>
+            
+        </div>
+
+        <div id="habit-filters">
+            <button class="filter-button active">ALL</button>
+            <button class="filter-button">MORNING</button>
+            <button class="filter-button">AFTERNOON</button>
+        </div>
+
+        <div id="habits">
+            <div class="habit">
+                <div class="habit-icon">🌙</div>
+                <span class="habit-name">Sleep over 8h</span>
+                <div class="habit-progress">...</div>
+            </div>
+        </div>
+
+        <button id="create-habit">CREATE A NEW HABIT</button>
+
+        <div id="navigation">
+            <div class="nav-item active">TODAY</div>
+            <div class="nav-item">JOURNEY</div>
+            <div class="nav-item">HISTORY</div>
+            <div class="nav-item">ME</div>
+        </div>
+    </div>
+    <script src="/js/try.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+    font-family: 'Times New Roman', Times, serif; /* Apply font family */
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-image: url('/image/nerdschalk-com-habit-tracker.jpg'); /* Outer background image */
+}
+
+/* Ensure that the font is Times New Roman for various elements */
+.openbtn,
+.sidebar a,
+.login-container h1,
+input[type="text"],
+input[type="password"],
+button,
+.lost-password,
+.google-login,
+.footer,
+.login,
+.sign,
+.content {
+    font-family: 'Times New Roman', Times, serif; /* Apply font family */
+}
+
+.openbtn {
+    position: fixed;
+    top: 20px; /* Increased to 20px */
+    left: 20px; /* Increased to 20px */
+    font-size: 24px; /* Increased to 24px */
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    border: 2px solid #ddd; /* Added border to match first snippet */
+    padding: 12px 16px; /* Increased to 12px 16px */
+    z-index: 1000;
+    width: 15%; /* Increased to 15% */
+    text-align: left;
+}
+
+.openbtn:hover {
+    background-color: #444;
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: #333; /* Sidebar background */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* Smooth transition */
+    padding-top: 60px; /* Increased to 60px */
+}
+
+.sidebar a {
+    padding: 12px 16px; /* Increased to 12px 16px */
+    text-decoration: none;
+    font-size: 24px; /* Increased to 24px */
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+.login-container {
+    background-color: #ffffff; /* Set the login container background to pure white */
+    padding: 78.5px; /* Adjusted to match style */
+    border-radius: 20px; /* Adjusted to 20px */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Shadows kept same */
+    width: 379px; /* Keep the same width */
+    text-align: center;
+    border: 2px solid #ddd; /* Added to match the border size */
+}
+
+h1 {
+    margin-bottom: 30px; /* Increased to 30px */
+    font-size: 36px; /* Increased to 36px */
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 14px; /* Increased to 14px */
+    margin-bottom: 12px; /* Increased to 12px */
+    border: 2px solid #ddd; /* Match the border size */
+    border-radius: 6px; /* Adjusted if needed */
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 14px; /* Increased to 14px */
+    background-color: #0066cc; /* Button background color */
+    color: white;
+    border: 2px solid #ddd; /* Added to match border */
+    border-radius: 25px; /* Adjusted for a rounder button */
+    cursor: pointer;
+    margin-top: 12px; /* Increased to 12px */
+}
+
+/* Ensure button text sizes are consistent */
+.login,
+.sign {
+    width: 100px; /* Consistent with the above */
+    padding: 14px; /* Increased to 19px */
+    background-color: #0066cc; /* Button background color */
+    color: white;
+    border: 2px solid #ddd; /* Added to match border size */
+    border-radius: 20px; /* Adjusted for a rounder button */
+    cursor: pointer;
+    margin-top: 12px; /* Increased to 12px */
+    font-size: 16px; /* Set a consistent font size for both buttons */
+    text-decoration: none; /* Ensure no underline */
+}
+
+.content {
+    text-align: center;
+    padding: 90px; /* Kept original for content spacing */
+    border-radius: 40px; /* Adjusted for consistent corners */
+    width: 100%;
+    max-width: 695px; /* Kept original max width */
+    background-color: #ffffff; /* Set content background to pure white */
+    margin-top: 30px; /* Kept spacing */
+    border: 2px solid #ddd; /* Added border for consistency */
+}
+
+button:hover {
+    background-color: #0088cc; /* Darker blue on hover */
+}
+
+h1 {
+    margin: 30px 0; /* Kept original margin */
+}

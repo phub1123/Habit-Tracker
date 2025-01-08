@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker</title>
+    <link rel="stylesheet" href="/css/endday.css">
+    <style>
+        /* Optional: This is just for demonstration to ensure no underline appears */
+        a {
+            text-decoration: none; /* Remove underline from all anchor tags */
+        }
+        .time-row {
+            cursor: pointer; /* Make it clear that these are selectable */
+        }
+        .time-row.selected {
+            background-color: lightblue; /* Visual feedback for selection */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>What time do you usually end your day?</h1>
+        <p>We'll remind you to finish your checklist before that</p>
+
+        <div class="time-selector">
+            <div class="time-column" id="column1">
+                <div class="time-row">00</div>
+                <div class="time-row">01</div>
+                <div class="time-row">02</div>
+                <div class="time-row">03</div>
+                <div class="time-row">04</div>
+                <div class="time-row">05</div>
+                <div class="time-row">06</div>
+                <div class="time-row">07</div>
+                <div class="time-row">08</div>
+                <div class="time-row">09</div>
+                <div class="time-row">10</div>
+                <div class="time-row">11</div>
+                <div class="time-row">12</div>
+                <div class="time-row">13</div>
+                <div class="time-row">14</div>
+                <div class="time-row">15</div>
+                <div class="time-row">16</div>
+                <div class="time-row">17</div>
+                <div class="time-row">18</div>
+                <div class="time-row">19</div>
+                <div class="time-row no-underline">20</div> 
+                <div class="time-row">21</div>
+                <div class="time-row">22</div>
+                <div class="time-row">23</div>
+            </div>
+            <div class="time-column" id="column2">
+                <div class="time-row">00</div>
+                <div class="time-row">01</div>
+                <div class="time-row">02</div>
+                <div class="time-row">03</div>
+                <div class="time-row">04</div>
+                <div class="time-row">05</div>
+                <div class="time-row">06</div>
+                <div class="time-row">07</div>
+                <div class="time-row">08</div>
+                <div class="time-row">09</div>
+                <div class="time-row">10</div>
+                <div class="time-row">11</div>
+                <div class="time-row">12</div>
+                <div class="time-row">13</div>
+                <div class="time-row">14</div>
+                <div class="time-row">15</div>
+                <div class="time-row">16</div>
+                <div class="time-row">17</div>
+                <div class="time-row">18</div>
+                <div class="time-row">19</div>
+                <div class="time-row">20</div>
+                <div class="time-row">21</div>
+                <div class="time-row">22</div>
+                <div class="time-row">23</div>
+                <div class="time-row">24</div>
+                <div class="time-row">25</div>
+                <div class="time-row">26</div>
+                <div class="time-row">27</div>
+                <div class="time-row">28</div>
+                <div class="time-row">29</div>
+                <div class="time-row">30</div>
+                <div class="time-row">31</div>
+                <div class="time-row">32</div>
+                <div class="time-row">33</div>
+                <div class="time-row">34</div>
+                <div class="time-row">35</div>
+                <div class="time-row">36</div>
+                <div class="time-row">37</div>
+                <div class="time-row">38</div>
+                <div class="time-row">39</div>
+                <div class="time-row">40</div>
+                <div class="time-row">41</div>
+                <div class="time-row">42</div>
+                <div class="time-row">43</div>
+                <div class="time-row">44</div>
+                <div class="time-row">45</div>
+                <div class="time-row">46</div>
+                <div class="time-row">47</div>
+                <div class="time-row">48</div>
+                <div class="time-row">49</div>
+                <div class="time-row">50</div>
+                <div class="time-row">51</div>
+                <div class="time-row">52</div>
+                <div class="time-row">53</div>
+                <div class="time-row">54</div>
+                <div class="time-row">55</div>
+                <div class="time-row">56</div>
+                <div class="time-row">57</div>
+                <div class="time-row">58</div>
+                <div class="time-row no-underline">59</div> 
+            </div>
+        </div>
+
+        <button id="next-button" class="next-button">Next</button>
+    </div>
+
+    <script src="/js/endday.js"></script>
+    <script>
+        let selectedHour = null;
+        let selectedMinute = null;
+
+        // Function to handle selection of time
+        function selectTime(event) {
+            if (event.target.classList.contains('time-row')) {
+                if (event.target.parentNode.id === 'column1') {
+                    selectedHour = event.target.innerText;
+                } else if (event.target.parentNode.id === 'column2') {
+                    selectedMinute = event.target.innerText;
+                }
+
+                // Update selected styles
+                document.querySelectorAll('.time-row.selected').forEach(row => row.classList.remove('selected'));
+                event.target.classList.add('selected');
+            }
+        }
+
+        // Event listeners 
+        document.getElementById('column1').addEventListener('click', selectTime);
+        document.getElementById('column2').addEventListener('click', selectTime);
+
+        // Event listener for the Next button
+        document.getElementById('next-button').addEventListener('click', function(event) {
+            // Check if both hour and minute are selected
+            if (selectedHour === null || selectedMinute === null) {
+                // Prevent navigation
+                alert("Please select both hour and minute before proceeding.");
+                event.preventDefault(); // Prevent the default action of the button
+            } else {
+                // Allow navigation - you can customize this line if needed
+                window.location.href = "/html/target.html";
+            }
+        });
+    </script>
+</body>
+</html>

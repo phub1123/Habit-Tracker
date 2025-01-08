@@ -1,0 +1,100 @@
+body {
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full height of the viewport */
+    font-family: 'Times New Roman', Times, serif; /* Change font to Times New Roman */
+    background-image: url('/image/nerdschalk-com-habit-tracker.jpg'); /* Add your background image */
+    background-size: cover; /* Cover the entire body */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Don't repeat the image */
+    color: #000; /* Change text color to black for visibility */
+    margin: 0; /* Remove default margin */
+    padding: 20px; /* Add padding */
+}
+
+.container {
+    margin: 50px auto;
+    width: 290px;
+    padding: 50px;
+    border-radius: 20px;
+    background-color: #ffffff; /* Container background set to pure white */
+    color: #000; /* Text color inside the container */
+    
+    display: flex; /* Enable flexbox */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+}
+
+
+h1, p, span { /* Ensure all heading, paragraph, and span use Times New Roman font */
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+.target-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    width: 100%; /* Make grid full width of the container */
+}
+
+.target-button {
+    background-color: #383838;
+    border: none;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Times New Roman', Times, serif; /* Ensure button text uses Times New Roman */
+}
+
+.target-button img {
+    width: 30px;
+    margin-bottom: 5px; /* Reduced spacing to bring the text closer */
+}
+
+.target-button:hover {
+    background-color: #484848;
+}
+
+.target-button.selected {
+    background-color: #007bff; /* Blue background for selected button */
+}
+
+.next-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 11px 19px;
+    border-radius: 11px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%; /* Make button full width */
+    max-width: 110px; /* Limit maximum width */
+    font-family: 'Times New Roman', Times, serif; /* Ensure button text uses Times New Roman */
+}
+
+/* Styles for the small icon */
+.icon-container {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center the items */
+    margin-top: 10px;
+    color: white; /* Set text color to white */
+}
+
+.icon {
+    width: 20px; /* Change as needed */
+    height: 20px; /* Change as needed */
+    margin-bottom: 5px; /* Space between icon and text */
+}
