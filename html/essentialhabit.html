@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            display: flex; /* Enable flexbox */
+            justify-content: center; /* Center horizontally */
+            align-items: flex-start; /* Align items to the top */
+            height: 100vh; /* Full height of the viewport */
+            font-family: 'Times New Roman', Times, serif; /* Change font to Times New Roman */
+            background-image: url('/image/nerdschalk-com-habit-tracker.jpg'); /* Add your background image */
+            background-size: cover; /* Cover the entire body */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Don't repeat the image */
+            color: #000; /* Change text color to black for visibility */
+            margin: 0; /* Remove default margin */
+            padding: 20px; /* Add padding */
+        }
+
+        .container {
+            max-width: 340px; /* Width of the container */
+            margin: 50px auto; /* Center the container with top margin */
+            padding: 65px;
+            width: 20%; /* Ensure it takes the full width */
+            border-radius: 20px;
+            background-color: #ffffff; /* White background for the container */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            text-align: center; /* Center text within the container */
+        }
+
+
+        /* Headings */
+        h1 {
+            margin-bottom: 10px; /* Spacing below the title */
+            color: #000;
+            font-size: 20px; /* Font size for the heading */
+        }
+
+        p {
+            margin-bottom: 15px; /* Spacing below the paragraph */
+            color: #333;
+            font-size: 16px; /* Font size for description */
+        }
+
+        /* Habits Container */
+        .habits {
+            max-height: 300px; /* Set a fixed height */
+            overflow-y: auto; /* Enable vertical scrolling */
+            margin-bottom: 20px;
+            display: flex; /* Use flexbox for habits */
+            flex-direction: column; /* Stack habits vertically */
+            align-items: stretch; /* Make sure all habits take full width */
+            font-size: 16px; /* Maintain font size */
+        }
+
+        /* Habit Settings */
+        .habit {
+            display: flex; /* Use flexbox for habit items */
+            align-items: center; /* Align items vertically center */
+            justify-content: flex-start; /* Align text to the left */
+            width: 140%; /* Occupy full width */
+            margin-bottom: 15px; /* Space between each habit */
+            cursor: pointer; /* Change cursor to pointer on hover */
+            transition: background-color 0.3s; /* Smooth transition */
+            padding: 10px; /* Padding for habit items */
+            border-radius: 10px; /* Rounded corners for habit items */
+            background-color: #f9f9f9; /* Light background color for habits */
+        }
+
+        .habit:hover {
+            background-color: #f0f0f0; /* Change background color on hover */
+        }
+
+        .habit img {
+            width: 42px;
+            height: 42px;
+            margin-right: 20px; /* Space between the image and text */
+            border-radius: 10px;
+        }
+
+        .habit-content {
+            display: flex;
+            flex-direction: column; /* Arrange title and description vertically */
+            font-size: 20px; /* Keep font size consistent */
+            text-align: left; /* Align text to the left */
+            flex-grow: 1; /* Allow content to take available space */
+        }
+
+        .habit h2 {
+            margin: 0; /* Remove default margin for h2 */
+            color: #000;
+            font-size: 17px; /* Font size for habit title */
+        }
+        
+
+        .habit p {
+            margin: 0; /* Remove default margin for p */
+            font-size: 15px; /* Font size for habit description */
+            color: #666; /* Dark gray color for description */
+        }
+
+        /* Score Display */
+        .score {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 2em;
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Essential Habits</h1>
+        <p>Refresh your life with simple acts</p>
+
+        <div class="habits">
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/setsmallgoals.jpeg" alt="Block screen time">
+                <div class="habit-content">
+                    <h2>Set Small Goals</h2>
+                    <p>Make goals more specific</p>
+                </div>
+            </div>
+
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/preparetomorrowtodolist.jpeg" alt="Limit caffeine intake">
+                <div class="habit-content">
+                    <h2>Prepare Tomorrow's List</h2>
+                    <p>Make your life time visible and countable.</p>
+                </div>
+            </div>
+
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/takegreenf.jpeg" alt="Intermittent fasting">
+                <div class="habit-content">
+                    <h2>Take Greens & Fruits</h2>
+                    <p>Don't forget the natural snacks.</p>
+                </div>
+            </div>
+
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/practice meditation.jpeg" alt="Practice meditation">
+                <div class="habit-content">
+                    <h2>Practice Meditation</h2>
+                    <p>Connect with your inner peace</p>
+                </div>
+            </div>
+
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/Drink 8 cup of water.jpeg" alt="Laugh more">
+                <div class="habit-content">
+                    <h2>Drink 8 Cups of Water</h2>
+                    <p>Keep your body hydrated.</p>
+                </div>
+            </div>
+
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/walking.jpeg" alt="'You're the best'">
+                <div class="habit-content">
+                    <h2>Walking</h2>
+                    <p>Strengthen muscles and lighten the mood.</p>
+                </div>
+            </div>
+
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/workout.jpeg" alt="Practice a hobby">
+                <div class="habit-content">
+                    <h2>Workout</h2>
+                    <p>Move your body and enjoy burning fat.</p>
+                </div>
+            </div>
+
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/sleep over 8h.jpeg" alt="Fast clean-up">
+                <div class="habit-content">
+                    <h2>Sleep Over 8 Hours</h2>
+                    <p>Enough time for sweet dreams.</p>
+                </div>
+            </div>
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/spendoneonone.jpeg" alt="Give a hug">
+                <div class="habit-content">
+                    <h2>Spend One-on-One Time</h2>
+                    <p>Quality time deepens love.</p>
+                </div>
+            </div>
+
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/trackspending.jpeg" alt="Pets together">
+                <div class="habit-content">
+                    <h2>Track Spending</h2>
+                    <p>Know where your money goes.</p>
+                </div>
+            </div>
+
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/cleanasyougo.jpeg" alt="Video Call">
+                <div class="habit-content">
+                    <h2>Clean as You Go</h2>
+                    <p>Make it part of your daily routine</p>
+                </div>
+            </div>
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/cleananddistinct.jpeg" alt="Pets together">
+                <div class="habit-content">
+                    <h2>Clean & disinfect</h2>
+                    <p>Protect your family from dirt and germs</p>
+                </div>
+            </div>
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/monitordailt.jpeg" alt="Pets together">
+                <div class="habit-content">
+                    <h2></h2>Monitor dailt temperature
+                    <p>Make sure your temperature is normal</p>
+                </div>
+            </div>
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/Have a healthy meal.jpeg" alt="Pets together">
+                <div class="habit-content">
+                    <h2>Have a healthy meal</h2>
+                    <p>The right mix of foods for optimal nutrition</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let currentHabit = null; // Keep track of the currently highlighted habit
+
+        function highlightHabit(element) {
+            // Reset the previous highlighted habit if it exists
+            if (currentHabit) {
+                currentHabit.style.backgroundColor = '';
+                currentHabit.querySelector("h2").style.color = '#000'; // Reset text color
+            }
+
+            // Change the background color of the clicked habit
+            element.style.backgroundColor = '#007bff';
+            // Change text color to white for visibility
+            element.querySelector("h2").style.color = '#fff';
+
+            // Set the current habit to the newly clicked one
+            currentHabit = element;
+        }
+    </script>
+</body>
+
+</html>

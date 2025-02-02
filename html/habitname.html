@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Times New Roman', Times, serif;
+            background-image: url('/image/nerdschalk-com-habit-tracker.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #000;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #FFFFFF;
+            color: #000000;
+            padding: 50px;
+            border-radius: 20px;
+            width: 290px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 70vh;
+        }
+
+        .habit-name, .icon-color, .repeat, .do-it-at, .advanced-settings {
+            margin-bottom: 15px;
+        }
+
+        .habit-name input {
+            width: 89%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            color: #000;
+        }
+
+        .icon-dropdown {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .icon-dropdown button {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: none;
+            z-index: 1;
+            width: 200px;
+            max-height: 200px; /* Set a maximum height for the dropdown */
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+
+        .dropdown-menu li {
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .dropdown-menu li:hover {
+            background-color: #f1f1f1;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .selected-icon {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .selected-icon img {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+        }
+
+        .repeat {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+
+        .repeat label {
+            margin-bottom: 5px;
+        }
+
+        .repeat select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+        }
+
+        .do-it-at {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+
+        .time-options {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .time-options button {
+            width: 25%;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: #ffffff;
+            color: #000;
+            border: 1px solid #007bff;
+        }
+
+        .time-options button.active {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .center-button {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .upload-icon {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        .upload-icon input {
+            flex-grow: 1;
+            padding: 5px;
+            margin-right: 5px;
+            border-radius: 10px;
+        }
+
+        #saveButton {
+            width: 28%;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="habit-name">
+            <input type="text" placeholder="Habit name" id="habitName">
+        </div>
+
+        <div class="icon-color">
+            <div class="icon-dropdown">
+                <button id="selected-icon-button">Select icon</button>
+                <ul class="dropdown-menu" id="iconDropdownMenu">
+                    <li data-icon-src="/image/1.jpeg">
+                        <img src="/image/1.jpeg" alt="Icon 1">
+                    </li>
+                    <li data-icon-src="/image/2.jpeg">
+                        <img src="/image/2.jpeg" alt="Icon 2">
+                    </li>
+                    <li data-icon-src="/image/3.jpeg">
+                        <img src="/image/3.jpeg" alt="Icon 3">
+                    </li>
+                    <li data-icon-src="/image/4.jpeg">
+                        <img src="/image/4.jpeg" alt="Icon 4">
+                    </li>
+                    <li data-icon-src="/image/5.jpeg">
+                        <img src="/image/5.jpeg" alt="Icon 5">
+                    </li>
+                    <li data-icon-src="/image/6.jpeg">
+                        <img src="/image/6.jpeg" alt="Icon 6">
+                    </li>
+                    <li data-icon-src="/image/7.jpeg">
+                        <img src="/image/7.jpeg" alt="Icon 7">
+                    </li>
+                    <li data-icon-src="/image/8.jpeg">
+                        <img src="/image/8.jpeg" alt="Icon 8">
+                    </li>
+                    <li data-icon-src="/image/9.jpeg">
+                        <img src="/image/9.jpeg" alt="Icon 9">
+                    </li>
+                    <li data-icon-src="/image/10.jpeg">
+                        <img src="/image/10.jpeg" alt="Icon 10">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/11.jpeg" alt="Icon 11">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/12.jpeg" alt="Icon 12">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/13.jpeg" alt="Icon 13">
+                    </li>
+                    
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/15.jpeg" alt="Icon 15">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/16.jpeg" alt="Icon 16">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/17.jpeg" alt="Icon 17">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/18.jpeg" alt="Icon 18">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/19.jpeg" alt="Icon 19">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/20.jpeg" alt="Icon 20">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/21.jpeg" alt="Icon 21">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/22.jpeg" alt="Icon 22">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/23.jpeg" alt="Icon 23">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/24.jpeg" alt="Icon 24">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/25.jpeg" alt="Icon 25">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/26.jpeg" alt="Icon 26">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/27.jpeg" alt="Icon 27">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/28.jpeg" alt="Icon 28">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/29.jpeg" alt="Icon 29">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/30.jpeg" alt="Icon 30">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/31.jpeg" alt="Icon 31">
+                    </li>
+                   
+                    
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/34.jpeg" alt="Icon 34">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/35.jpeg" alt="Icon 35">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/36.jpeg" alt="Icon 36">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/37.jpeg" alt="Icon 37">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/38.jpeg" alt="Icon 38">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/39.jpeg" alt="Icon 39">
+                    </li>
+                    <li data-icon-src="/image/11.jpeg">
+                        <img src="/image/40.jpeg" alt="Icon 40">
+                    </li>
+                </ul>
+                <div class="upload-icon">
+                    <!-- Input for adding custom icons will be added here later if needed. -->
+                </div>
+            </div>
+        </div>
+
+        <div class="selected-icon">
+            <img id="selected-icon-img" style="display: none;">
+        </div>
+
+        <div class="repeat">
+            <label for="repeat">Repeat:</label>
+            <select id="repeat">
+                <option value="everyday">1</option>
+                <option value="weekdays">2</option>
+                <option value="custom">3</option>
+                <option value="everyday">4</option>
+                <option value="weekdays">5</option>
+                <option value="custom">6</option>
+                <option value="everyday">7</option>
+                <option value="weekdays">8</option>
+                <option value="custom">9</option>
+                <option value="weekdays">10</option>
+                <option value="weekdays">11</option>
+                <option value="weekdays">12</option>
+                <option value="weekdays">13</option>
+                
+                <option value="custom">15</option>
+                <option value="weekdays">16</option>
+                <option value="weekdays">17</option>
+                <option value="weekdays">18</option>
+                <option value="weekdays">19</option>
+                <option value="weekdays">20</option>
+                <option value="weekdays">21</option>
+                <option value="weekdays">22</option>
+                <option value="custom">23</option>
+                <option value="everyday">24</option>
+                <option value="weekdays">25</option>
+                <option value="custom">26</option>
+                <option value="everyday">27</option>
+                <option value="weekdays">28</option>
+                <option value="custom">29</option>
+                <option value="weekdays">30</option>
+                <option value="weekdays">31</option>
+                <option value="weekdays">32</option>
+                <option value="weekdays">33</option>
+                <option value="weekdays">34</option>
+                <option value="custom">35</option>
+                <option value="weekdays">36</option>
+                <option value="weekdays">37</option>
+                <option value="weekdays">38</option>
+                <option value="weekdays">39</option>
+                <option value="weekdays">40</option>
+                
+            </select>
+        </div>
+
+        <div class="do-it-at">
+            <label for="time">Do it at:</label>
+            <div class="time-options">
+                <button id="anytime" class="active">Anytime</button>
+                <button id="morning">Morning</button>
+                <button id="afternoon">Afternoon</button>
+                <button id="evening">Evening</button>
+            </div>
+        </div>
+
+        <div class="center-button">
+            <button id="saveButton">SAVE</button>
+        </div>
+    </div>
+
+    <script>
+        const selectedIconButton = document.getElementById('selected-icon-button');
+        const iconDropdownMenu = document.getElementById('iconDropdownMenu');
+        const timeButtons = document.querySelectorAll('.time-options button');
+        const selectedIconImg = document.getElementById('selected-icon-img');
+        const habitNameInput = document.getElementById('habitName');
+        const saveButton = document.getElementById('saveButton');
+
+        // Show dropdown menu on button click
+        selectedIconButton.addEventListener('click', () => {
+            iconDropdownMenu.classList.toggle('show');
+        });
+
+        // Handle icon selection
+        iconDropdownMenu.addEventListener('click', (event) => {
+            const listItem = event.target.closest('li');
+            if (listItem) {
+                const iconSrc = listItem.getAttribute('data-icon-src');
+
+                // Update the selected icon display
+                selectedIconImg.src = iconSrc;
+                selectedIconImg.style.display = 'block';
+                
+                // Change button text to indicate selection
+                selectedIconButton.textContent = "Icon Selected!";
+                
+                // Optionally close the dropdown
+                iconDropdownMenu.classList.remove('show');
+            }
+        });
+
+        // Close dropdown if clicking outside
+        document.addEventListener('click', (event) => {
+            if (event.target !== selectedIconButton && !iconDropdownMenu.contains(event.target)) {
+                iconDropdownMenu.classList.remove('show');
+            }
+        });
+
+        // Handle time button clicks
+        timeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                timeButtons.forEach(b => b.classList.remove('active'));
+                // Set the clicked button as active
+                button.classList.add('active');
+                console.log(`Selected time: ${button.textContent}`);
+            });
+        });
+
+        // Handle save button click
+        saveButton.addEventListener('click', () => {
+            const habitName = habitNameInput.value;
+            localStorage.setItem('habitName', habitName);
+            window.location.href = '1stpage.html'; // Redirect to 1stpage.html
+        });
+    </script>
+</body>
+</html>

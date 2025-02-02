@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            display: flex; /* Enable flexbox */
+            justify-content: center; /* Center horizontally */
+            align-items: flex-start; /* Align items to the top */
+            height: 100vh; /* Full height of the viewport */
+            font-family: 'Times New Roman', Times, serif; /* Change font to Times New Roman */
+            background-image: url('/image/nerdschalk-com-habit-tracker.jpg'); /* Add your background image */
+            background-size: cover; /* Cover the entire body */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Don't repeat the image */
+            color: #000; /* Change text color to black for visibility */
+            margin: 0; /* Remove default margin */
+            padding: 20px; /* Add padding */
+        }
+
+        .container {
+            max-width: 340px; /* Width of the container */
+            margin: 50px auto; /* Center the container with top margin */
+            padding: 65px;
+            width: 20%; /* Ensure it takes the full width */
+            border-radius: 20px;
+            background-color: #ffffff; /* White background for the container */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            text-align: center; /* Center text within the container */
+        }
+
+
+        /* Headings */
+        h1 {
+            margin-bottom: 10px; /* Spacing below the title */
+            color: #000;
+            font-size: 20px; /* Font size for the heading */
+        }
+
+        p {
+            margin-bottom: 15px; /* Spacing below the paragraph */
+            color: #333;
+            font-size: 16px; /* Font size for description */
+        }
+
+        /* Habits Container */
+        .habits {
+            max-height: 300px; /* Set a fixed height */
+            overflow-y: auto; /* Enable vertical scrolling */
+            margin-bottom: 20px;
+            display: flex; /* Use flexbox for habits */
+            flex-direction: column; /* Stack habits vertically */
+            align-items: stretch; /* Make sure all habits take full width */
+            font-size: 16px; /* Maintain font size */
+        }
+
+        /* Habit Settings */
+        .habit {
+            display: flex; /* Use flexbox for habit items */
+            align-items: center; /* Align items vertically center */
+            justify-content: flex-start; /* Align text to the left */
+            width: 140%; /* Occupy full width */
+            margin-bottom: 15px; /* Space between each habit */
+            cursor: pointer; /* Change cursor to pointer on hover */
+            transition: background-color 0.3s; /* Smooth transition */
+            padding: 5px; /* Padding for habit items */
+            border-radius: 10px; /* Rounded corners for habit items */
+            background-color: #f9f9f9; /* Light background color for habits */
+        }
+
+        .habit:hover {
+            background-color: #f0f0f0; /* Change background color on hover */
+        }
+
+        .habit img {
+            width: 42px;
+            height: 42px;
+            margin-right: 20px; /* Space between the image and text */
+            border-radius: 10px;
+        }
+
+        .habit-content {
+            display: flex;
+            flex-direction: column; /* Arrange title and description vertically */
+            font-size: 20px; /* Keep font size consistent */
+            text-align: left; /* Align text to the left */
+            flex-grow: 1; /* Allow content to take available space */
+            
+        }
+
+        .habit h2 {
+            margin: 0; /* Remove default margin for h2 */
+            color: #000;
+            font-size: 17px; /* Font size for habit title */
+        }
+        
+
+        .habit p {
+            margin: 0; /* Remove default margin for p */
+            font-size: 15px; /* Font size for habit description */
+            color: #666; /* Dark gray color for description */
+        }
+
+        /* Score Display */
+        .score {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 2em;
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Habits in Trend</h1>
+        <p>Keep up the pace with the world</p>
+
+        <div class="habits">
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/Block Screen Time.jpeg" alt="Block screen time">
+                <div class="habit-content">
+                    <h2>Block Screen Time</h2>
+                    <p>Lock your screen to improve focus.</p>
+                </div>
+            </div>
+
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/limitcaffeineintake.jpeg" alt="Limit caffeine intake">
+                <div class="habit-content">
+                    <h2>Limit Caffeine Intake</h2>
+                    <p>Replace with healthier options.</p>
+                </div>
+            </div>
+
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/intermittentfasting.jpeg" alt="Intermittent fasting">
+                <div class="habit-content">
+                    <h2>Intermittent Fasting</h2>
+                    <p>Give your stomach time to rest.</p>
+                </div>
+            </div>
+
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/practice meditation.jpeg" alt="Practice meditation">
+                <div class="habit-content">
+                    <h2>Practice Meditation</h2>
+                    <p>Connect with your inner peace.</p>
+                </div>
+            </div>
+
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/laughmore.jpeg" alt="Laugh more">
+                <div class="habit-content">
+                    <h2>Laugh More</h2>
+                    <p>Find joy in everyday moments.</p>
+                </div>
+            </div>
+
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/youarethebest.jpeg" alt="'You're the best'">
+                <div class="habit-content">
+                    <h2>Say "You're the Best"</h2>
+                    <p>A positive affirmation to start your day.</p>
+                </div>
+            </div>
+
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/practiceahobby.jpeg" alt="Practice a hobby">
+                <div class="habit-content">
+                    <h2>Practice a Hobby</h2>
+                    <p>Engage in activities you love.</p>
+                </div>
+            </div>
+
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/fastcleanup.jpeg" alt="Fast clean-up">
+                <div class="habit-content">
+                    <h2>Fast Clean-Up</h2>
+                    <p>Tidy up your space quickly.</p>
+                </div>
+            </div>
+
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/giveahug.jpeg" alt="Give a hug">
+                <div class="habit-content">
+                    <h2>Give a Hug</h2>
+                    <p>A small gesture that means a lot.</p>
+                </div>
+            </div>
+
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/petstogether.jpeg" alt="Pets together">
+                <div class="habit-content">
+                    <h2>Pets Together</h2>
+                    <p>Share moments with furry friends.</p>
+                </div>
+            </div>
+
+            <div class="habit" onclick="highlightHabit(this)">
+                <img src="/image/videocall.jpeg" alt="Video Call">
+                <div class="habit-content">
+                    <h2>Video Call</h2>
+                    <p>Stay connected with loved ones, no matter where they are.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let currentHabit = null; // Keep track of the currently highlighted habit
+
+        function highlightHabit(element) {
+            // Reset the previous highlighted habit if it exists
+            if (currentHabit) {
+                currentHabit.style.backgroundColor = '';
+                currentHabit.querySelector("h2").style.color = '#000'; // Reset text color
+            }
+
+            // Change the background color of the clicked habit
+            element.style.backgroundColor = '#007bff';
+            // Change text color to white for visibility
+            element.querySelector("h2").style.color = '#fff';
+
+            // Set the current habit to the newly clicked one
+            currentHabit = element;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Time Periods</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif; /* Apply font family */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('/image/nerdschalk-com-habit-tracker.jpg'); /* Replace with your image URL */
+            background-size: cover; /* Cover the entire area */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Do not repeat the image */
+        }
+
+        .container {
+            width: 350px; /* Set a more compact width for the container */
+            min-height: 500px; /* Set a minimum height */
+            margin: 20px auto; /* Adjusted top/bottom margins */
+            padding: 20px; /* Keeping padding for content spacing */
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .time-period {
+            display: flex;
+            justify-content: space-between; /* Space between items */
+            align-items: center; /* Center align items */
+            padding: 20px 0; /* Add some padding for the time periods */
+            border-bottom: 1px solid #ccc;
+        }
+
+        .time-period:last-child {
+            border-bottom: none; /* Remove border from last child */
+        }
+
+        .time-period h3 {
+            margin: 0; /* Remove default margin */
+            font-size: 1.2em; /* Slightly increase font size for better readability */
+        }
+
+        .time-info {
+            display: flex;
+            flex-direction: column; /* Allow for better alignment */
+        }
+
+        .time-info > p {
+            margin: 0; /* Avoid extra spacing */
+        }
+
+        .time-picker {
+            display: flex; /* Change display to flex */
+            align-items: center; /* Align items center */
+            margin-left: 10px; /* Adjust left margin for spacing */
+        }
+
+        .time-picker span {
+            margin-right: 10px; /* Add space between label and dropdown */
+        }
+
+        .time-picker {
+            margin-top: 10px; /* Add top margin for spacing */
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Time Periods</h1>
+
+    <div class="time-period">
+        <div class="time-info">
+            <h3>Morning</h3>
+            <p>06:01 - 12:00</p>
+        </div>
+        <div class="time-picker">
+            <span>Start at:</span>
+            <select>
+                <option value="06:01">06:01 - 07:00</option>
+                <option value="07:00">07:00 - 08:00</option>
+                <option value="08:00">08:00 - 09:00</option>
+                <option value="09:00">09:00 - 10:00</option>
+                <option value="10:00">10:00 - 11:00</option>
+                <option value="11:00">11:00 - 12:00</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="time-period">
+        <div class="time-info">
+            <h3>Afternoon</h3>
+            <p>12:00 - 19:00</p>
+        </div>
+        <div class="time-picker">
+            <span>Start at:</span>
+            <select>
+                <option value="12:00">12:00 - 13:00</option>
+                <option value="13:00">13:00 - 14:00</option>
+                <option value="14:00">14:00 - 15:00</option>
+                <option value="15:00">15:00 - 16:00</option>
+                <option value="16:00">16:00 - 17:00</option>
+                <option value="17:00">17:00 - 18:00</option>
+                <option value="18:00">18:00 - 19:00</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="time-period">
+        <div class="time-info">
+            <h3>Evening</h3>
+            <p>19:00 - 23:00</p>
+        </div>
+        <div class="time-picker">
+            <span>Start at:</span>
+            <select>
+                <option value="19:00">19:00 - 20:00</option>
+                <option value="20:00">20:00 - 21:00</option>
+                <option value="21:00">21:00 - 22:00</option>
+                <option value="22:00">22:00 - 23:00</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="time-period">
+        <div class="time-info">
+            <h3>End of Day</h3>
+            <p>23:00</p>
+        </div>
+        <div class="time-picker">
+            <span>End at:</span>
+            <select>
+                <option value="23:00">23:00 - 00:00</option>
+                <option value="00:00">00:00 - 01:00</option> <!-- Next day -->
+                <option value="01:00">01:00 - 02:00</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

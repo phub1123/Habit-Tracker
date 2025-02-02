@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a New Habit</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif; /* Apply font family */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('/image/nerdschalk-com-habit-tracker.jpg'); /* Replace with your image URL */
+            background-size: cover; /* Cover the entire area */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Do not repeat the image */
+        }
+
+        .container {
+            max-width: 2000px; /* Increased width of the container */
+            margin: 50px auto;
+            width: 24%; /* Ensure it takes the full width */
+            padding: 32px;
+            border-radius: 20px;
+            background-color: #ffffff; /* White background for the container */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            position: relative; /* Allow absolute positioning within the container */
+        }
+
+        .small-text {
+            position: absolute;
+            top: 10px; /* Adjust the top position as needed */
+            left: 10px; /* Adjust the left position as needed */
+            font-size: 14px; /* Make the text small */
+            color: black; /* A darker color for better visibility */
+        }
+
+        .create-button {
+            display: inline-block; /* Change to inline-block for centering */
+            width: 100%;  /* Button width */
+            padding: 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #3880ff; /* Button color */
+            color: white; /* Button text color */
+            font-size: 17px;
+            font-family: 'Times New Roman', Times, serif; /* Set font to Times New Roman */
+            cursor: pointer;
+        }
+
+        .presets-container {
+            margin-top: 10px; /* Reduced space between button and title */
+            max-height: 400px; /* Increased height for the scrollable area */
+            overflow-y: auto; /* Enable vertical scrolling */
+            border-radius: 5px; /* Rounded corners for the scrollable area */
+            padding: 0; /* Remove padding if you don't want space around items */
+        }
+
+        .preset-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            background-color: transparent; /* Make background transparent */
+            transition: background-color 0.3s; /* Transition for hover effect */
+            cursor: pointer; /* Change cursor to pointer on hover */
+        }
+
+        .preset-item:hover {
+            background-color: #d9d9d9; /* Change background on hover */
+        }
+
+        .preset-header {
+            display: flex;
+            align-items: center; /* Aligns items vertically in the center */
+            flex: 1; /* Take all available space */
+        }
+
+        .preset-item img {
+            width: 42px;
+            height: 42px;
+            margin-right: 20px; /* Space between the image and text */
+            border-radius: 10px;
+        }
+
+        .preset-item h3 {
+            margin: 0;
+            font-size: 17px; /* Uniform font size for header */
+            line-height: 1.5; /* Ensure consistent line height */
+            color: black; /* Change header color to black */
+        }
+
+        .preset-item p {
+            margin: 0;
+            font-size: 15px;
+            color: #555; /* Darker gray for description text */
+            line-height: 1.5; /* Ensure consistent line height */
+        }
+
+        .presets-title {
+            font-size: 16px; /* Smaller font size */
+            text-align: center; /* Center the text */
+            margin: 15px 0; /* Add margin for spacing above and below */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="small-text">Create a new habit</div><br>
+
+        <div style="text-align: center; margin-bottom: 10px;">
+            <button class="create-button" onclick="window.location.href='habitname.html'"> <!-- Added onclick event -->
+                <span>+</span> Create your own
+            </button>
+        </div>
+
+        <div class="presets-container">
+            <h2 class="presets-title">OR CHOOSE FROM PRESETS</h2>
+            <div class="preset-item" id="habit-trend" onclick="window.location.href='habitintrend.html'">
+                <div class="preset-header">
+                    <img src="/image/Habitintrend.jpeg" alt="">
+                    <div>
+                        <h3>Habits in trend</h3>
+                        <p>Keep up the pace with the world</p>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="preset-item" id="essential-habit" onclick="window.location.href='essentialhabit.html'">
+                <div class="preset-header">
+                    <img src="/image/essentialhabiit.jpeg" alt="">
+                    <div>
+                        <h3>Essential habits</h3>
+                        <p>Refresh your life with simple acts</p>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="preset-item" id="eat-drink-habit" onclick="window.location.href='eatanddrink.html'">
+                <div class="preset-header">
+                    <img src="/image/eatanddrink.jpeg" alt="">
+                    <div>
+                        <h3>Eat & drink healthily</h3>
+                        <p>Stay healthy with daily intakes</p>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="preset-item" onclick="window.location.href='keepactive.html'">
+                <div class="preset-header">
+                    <img src="/image/keepactive.jpeg" alt="">
+                    <div>
+                        <h3>Keep active & get fit</h3>
+                        <p>Sweat never lies</p>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="preset-item" onclick="window.location.href='easestress.html'">
+                <div class="preset-header">
+                    <img src="/image/easestress.jpeg" alt="">
+                    <div>
+                        <h3>Ease stress</h3>
+                        <p>Your efforts deserve a break</p>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="preset-item" onclick="window.location.href='gainselfdiscipline.html'">
+                <div class="preset-header">
+                    <img src="/image//gainselfd.jpeg" alt="">
+                    <div>
+                        <h3>Gain self-discipline</h3>
+                        <p>Let yourself manage yourself</p>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>            
+            <div class="preset-item" onclick="window.location.href='goodmorning.html'">
+                <div class="preset-header">
+                    <img src="/image/goodmorning.jpeg" alt="">
+                    <div>
+                        <h3>Good morning</h3>
+                        <p>In the morning light, do what's right</p>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="preset-item" onclick="window.location.href='beforesleep.html'">
+                <div class="preset-header">
+                    <img src="/image/beforesleeproutine.jpeg" alt="">
+                    <div>
+                        <h3>Before sleep routine</h3>
+                        <p>May your dream be sweet tonight</p>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="preset-item" onclick="window.location.href='masterproductivity.html'">
+                <div class="preset-header">
+                    <img src="/image/masterproductivity.jpeg" alt="">
+                    <div>
+                        <h3>Master productivity</h3>
+                        <p>Be strategic with your efforts and time</p>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="preset-item" onclick="window.location.href='tidylife.html'">
+                <div class="preset-header">
+                    <img src="/image/tidylife.jpeg" alt="">
+                    <div>
+                        <h3>Tidy life</h3>
+                        <p>Everything has its own place</p>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="preset-item" onclick="window.location.href='leisuremoments.html'">
+                <div class="preset-header">
+                    <img src="/image/Live Healthier.jpeg" alt="">
+                    <div>
+                        <h3>Leisure moments</h3>
+                        <p>Live your life to the max</p>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="preset-item" onclick="window.location.href='stayconnect.html'">
+                <div class="preset-header">
+                    <img src="/image/stayconnected.jpeg" alt="">
+                    <div>
+                        <h3>Stay connected</h3>
+                        <p>Caring and sharing</p>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="preset-item" onclick="window.location.href='exploreyournewself.html'">
+                <div class="preset-header">
+                    <img src="/image/explorenewself.jpeg" alt="">
+                    <div>
+                        <h3>Explore your new self</h3>
+                        <p>Discover your inner unknowns</p>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="preset-item" onclick="window.location.href='strongermind.html'">
+                <div class="preset-header">
+                    <img src="/image/strongmind.jpeg" alt="">
+                    <div>
+                        <h3>Stronger mind</h3>
+                        <p>What doesn't kill you makes you stronger</p>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="preset-item" onclick="window.location.href='beaninterestingperson.html'">
+                <div class="preset-header">
+                    <img src="/image/beaninteresting.jpeg" alt="">
+                    <div>
+                        <h3>Be an interesting person</h3>
+                        <p>End boring and start charming</p>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="preset-item" onclick="window.location.href='budgetmoney.html'"> <!-- Updated to link to budgetmoney.html -->
+                <div class="preset-header">
+                    <img src="/image/budgetmoney.jpeg" alt="">
+                    <div>
+                        <h3>Budget money</h3>
+                        <p>Give every dollar a job</p>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="preset-item" onclick="window.location.href='treasurepettime.html'"> <!-- Updated to link to treasurepettime.html -->
+                <div class="preset-header">
+                    <img src="/image/treasurepet.jpeg" alt="">
+                    <div>
+                        <h3>Treasure pet time</h3>
+                        <p>Love to be needed</p>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="preset-item" onclick="window.location.href='getthroughquarantine.html'"> <!-- Updated to link to getthroughquarantine.html -->
+                <div class="preset-header">
+                    <img src="/image/getthroughquarantine.jpeg" alt="">
+                    <div>
+                        <h3>Get through quarantine</h3>
+                        <p>Be alone without being lonely</p>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Select all preset-item elements
+        const presetItems = document.querySelectorAll('.preset-item');
+
+        // Add click event listener to each preset item except those that navigate
+        presetItems.forEach(item => {
+            if (!item.id) { // Allow navigation only on specific items
+                item.addEventListener('click', () => {
+                    // Set the background color of the clicked preset item
+                    item.style.backgroundColor = "#3880ff"; // Change to the desired color
+                    item.style.color = "white"; // Change text color to white for better visibility
+
+                    // Reset background color for all other items
+                    presetItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.style.backgroundColor = "transparent"; // Reset to transparent
+                            otherItem.style.color = "black"; // Reset text color to original
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

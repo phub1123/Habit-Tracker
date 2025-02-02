@@ -301,7 +301,7 @@
         <a href="/html/Feedback.html" class="icon-link">
             <img src="/image/Feedback.jpeg" alt="Feedback Icon"> Feedback
         </a>
-        <a href="/html/generalsetting.html" class="icon-link">
+        <a href="/html/general.html" class="icon-link">
             <img src="/image/General setting.jpeg" alt="General Settings Icon"> General Settings
         </a>
         <a href="#" class="icon-link" id="logout-button">
@@ -426,7 +426,10 @@
             }
         }
 
-        document.getElementById('create-habit-button').addEventListener('click', createNewHabit);
+        // Updated to navigate to the new habit page
+        document.getElementById('create-habit-button').addEventListener('click', function() {
+            window.location.href = 'createnewhabit.html'; // Redirect to the new page
+        });
 
         document.addEventListener('DOMContentLoaded', () => {
             const chosenHabitElement = document.getElementById('chosen-habit');
@@ -479,8 +482,9 @@
             alert('You are already on the Today page!');
         });
 
+        // Navigate to history.html when the history button is clicked
         document.getElementById('history-button').addEventListener('click', function() {
-            alert('History button clicked');
+            window.location.href = 'history.html'; // Redirect to history.html
         });
 
         function openSidebar() {

@@ -91,10 +91,12 @@ p {
     align-items: center; /* Center the items */
     margin-top: 10px;
     color: white; /* Set text color to white */
+    
 }
 
 .icon {
     width: 20px; /* Change as needed */
     height: 20px; /* Change as needed */
     margin-bottom: 5px; /* Space between icon and text */
+    border-radius: 8px;
 }
